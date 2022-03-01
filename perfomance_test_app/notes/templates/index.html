@@ -1,0 +1,34 @@
+{% extends 'base_notes.html' %}
+
+{% block content %}
+    <h1 class="mx-5 my-5">Notes:</h1>
+    
+    <div class="container">
+        <div class="row">
+       
+            {% for note in page_object.object_list %}
+            
+            <div class="col">
+
+                <div class="card border-info mb-3" style="max-width: 18rem;">
+                    <div class="card-header">{{ note.title }}</div>
+                    <div class="card-body">
+                      <h5 class="card-title">{{ note.date_pub }}</h5>
+                      <p class="card-text">{{ note.body | truncatewords:19 }}</p>
+                    </div>
+                    <div class="btn-group btn-group-sm" role="group" aria-label="Basic outlined example">
+                        <a type="button" class="btn btn-outline-dark btn-sm" href="{{ note.get_absolute_url }}" role="button" >Read</a>
+                        <a type="button" class="btn btn-outline-primary btn-sm" href="{{ note.get_update_url }}" role="button" >Update</a>
+                        <a type="button" class="btn btn-outline-danger btn-sm" href="{{ note.get_delete_url }}" role="button" >Delete</a>
+                      </div>
+                </div> 
+                
+            </div>
+            
+
+            {% endfor %}
+
+        </div>
+    </div>
+
+{% endblock %}

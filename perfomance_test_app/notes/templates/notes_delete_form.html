@@ -1,0 +1,18 @@
+{% extends 'base_notes.html' %}
+
+{% block title %}
+    Delete Note '{{ note.title|title }}' - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <form action="{{ note.notes_delete_url }}" method="post">
+        {% csrf_token %}
+
+        <h3>Are you sure you want to delete <b>'{{ notes.title.title }}'</b>note?</h3>
+
+        <a href="{{ note.get_absolute_url }}">Cancel</a>
+        <button type="submit" name="button" class="btn btn-danger">Delete</button>
+    </form>
+
+
+{% endblock %}

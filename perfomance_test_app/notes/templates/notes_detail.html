@@ -1,0 +1,16 @@
+{% extends 'base_notes.html' %}
+
+{% block title %}
+    {{ notes.title }} - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <h1 class="mt-5">{{ notes.title }}</h1>
+    <p>
+        {{ notes.body }}
+    </p>
+    <p>
+        {{ notes.date_pub }}
+        
+    </p>
+{% endblock %}
