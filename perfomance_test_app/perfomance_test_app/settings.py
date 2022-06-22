@@ -10,13 +10,47 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
-import os
-
 from pathlib import Path
+import os
+import logging.config
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+LOGGING_CONFIG = None
+
+logging.config.dictConfig({
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'console': {
+            'format': '%(asctime)-s %(levelname)-s [name: %(name)-s] [module: %(module)s] [process: %(process)s] [thread: %(thread)s] %(message)s',
+            'datefmt': '%d.%m.%Y %H:%M:%S'
+        },
+        'file': {
+            'format': '%(asctime)-s %(levelname)-s [name: %(name)-s] [module: %(module)s] [process: %(process)s] [thread: %(thread)s] %(message)s',
+            'datefmt': '%d.%m.%Y %H:%M:%S'
+        }
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'console'
+        },
+        'file': {
+            'class': 'logging.FileHandler',
+            'formatter': 'file',
+            'filename': 'log/notes.log'
+        }
+    },
+    'loggers': {
+        '': {
+            'level': 'INFO',
+            'handlers': ['console', 'file']
+        }
+    }
+})
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
