@@ -2,6 +2,7 @@ from django import forms
 from .models import Notes
 from django.core.exceptions import ValidationError
 
+
 class NotesForm(forms.ModelForm):
     class Meta:
         model = Notes

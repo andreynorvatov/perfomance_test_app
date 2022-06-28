@@ -1,5 +1,6 @@
 {% extends 'base_notes.html' %}
 
+
 {% block title %}
 Create Note - {{ block.super }}
 {% endblock %}
@@ -7,34 +8,36 @@ Create Note - {{ block.super }}
 
 {% block content %}
 
+<h1 class="mx-5 my-5">Create new note:</h1>
 
 <div class="container">
+    
+
     <div class="row align-items-start">
-      <div class="col">
-        <h1 class="mb-2">Create new note</h1>
-  
-                <form action="{% url 'notes_create_url' %}" method="post">
-                    {% csrf_token %}
-  
-                    {% for field in form %}
-                        <div class="form-group">
-                            {% if field.errors %}
-                                <div class="alert alert-danger">
-                                    {{ field.errors }}
-                                </div>
-                            {% endif %}
-                            {{ field.label }}
-                            {{ field }}
-                        </div>
-                    {% endfor %}
+        <div class="col">
 
-  
-                    <button type="submit" name="button" class="btn btn-primary">Create Note</button>
+            <form action="{% url 'notes_create_url' %}" method="post">
+            {% csrf_token %}
+
+                {% for field in form %}
+                    <div class="form-group">
+                        {% if field.errors %}
+                            <div class="alert alert-danger">
+                        {{ field.errors }}
+                            </div>
+                        {% endif %}
+                    {{ field.label }}
+                    {{ field }}
+                    </div>
+                {% endfor %}
+
+
+                <button type="submit" name="button" class="btn btn-primary">Create Note</button>
                 </form>
-  
-            </div>
-</div>
 
+        </div>
+    </div>
+</div>
 
 
 
